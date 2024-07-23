@@ -154,11 +154,20 @@
             style="@style/CalculatorButton"
             android:text="="
             android:onClick="onEqualsClicked"
-            app:layout_columnSpan="2"
+            app:layout_columnSpan="1"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"/>
 
         <!-- Row 5 -->
+        <Button
+            android:id="@+id/buttonDot"
+            style="@style/CalculatorButton"
+            android:text="."
+            android:onClick="onDotClicked"
+            app:layout_columnSpan="2"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
         <Button
             android:id="@+id/button0"
             style="@style/CalculatorButton"
@@ -168,20 +177,5 @@
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"/>
 
-        <Button
-            android:id="@+id/buttonDot"
-            style="@style/CalculatorButton"
-            android:text="."
-            android:onClick="onDotClicked"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
-
-        <!-- Dummy Button for spacing -->
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
     </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
