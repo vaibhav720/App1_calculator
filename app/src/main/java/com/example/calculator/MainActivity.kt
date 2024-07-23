@@ -13,14 +13,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewResult: TextView
     private var currentInput = ""
     private var operator = ""
-    private var firstNumber = ""
-    private var secondNumber = ""
+    private var firstInput = ""
+    private var secondInput = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        textViewResult = findViewById(R.id.textViewResult)
+        textViewResult = findViewById(R.id.ResultText)
 
         setNumberButtonListeners()
         setOperatorButtonListeners()
@@ -28,9 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setNumberButtonListeners() {
         val numberButtons = listOf(
-            R.id.button0, R.id.button1, R.id.button2, R.id.button3,
-            R.id.button4, R.id.button5, R.id.button6, R.id.button7,
-            R.id.button8, R.id.button9
+            R.id.buttonZero, R.id.buttonOne, R.id.buttonTwo, R.id.buttonThree,
+            R.id.buttonFour, R.id.buttonFive, R.id.buttonSix, R.id.buttonSeven,
+            R.id.buttonEight, R.id.buttonNine
         )
 
         for (id in numberButtons) {
@@ -67,26 +67,26 @@ class MainActivity : AppCompatActivity() {
             "C" -> {
                 currentInput = ""
                 operator = ""
-                firstNumber = ""
-                secondNumber = ""
+                firstInput = ""
+                secondInput = ""
                 textViewResult.text = "0"
             }
             "+", "-", "*", "/" -> {
                 if (currentInput.isNotEmpty()) {
-                    firstNumber = currentInput
+                    firstInput = currentInput
                     operator = buttonText
                     currentInput = ""
                 }
             }
             "=" -> {
-                if (firstNumber.isNotEmpty() && operator.isNotEmpty() && currentInput.isNotEmpty()) {
-                    secondNumber = currentInput
+                if (firstInput.isNotEmpty() && operator.isNotEmpty() && currentInput.isNotEmpty()) {
+                    secondInput = currentInput
                     val result = calculateResult()
                     textViewResult.text = result.toString()
                     currentInput = result.toString()
-                    firstNumber = ""
+                    firstInput = ""
                     operator = ""
-                    secondNumber = ""
+                    secondInput = ""
                 }
             }
             "." -> {
@@ -99,8 +99,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateResult(): Double {
-        val num1 = firstNumber.toDouble()
-        val num2 = secondNumber.toDouble()
+        val num1 = firstInput.toDouble()
+        val num2 = secondInput.toDouble()
 
         return when (operator) {
             "+" -> num1 + num2
